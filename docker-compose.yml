@@ -1,0 +1,14 @@
+services:
+
+  cassandra:
+    image: cassandra:5.0
+    hostname: cassandra
+    ports:
+      - 9042:9042
+    networks:
+      - cassandra
+
+networks:
+  cassandra:
+    name: cassandra
+    driver: bridge
