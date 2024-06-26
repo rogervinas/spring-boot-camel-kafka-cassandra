@@ -11,28 +11,34 @@ public class CassandraInitializer {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(CassandraInitializer.class);
 
-  public CassandraInitializer(String hostname, int port) {
+  public CassandraInitializer(
+    String hostname,
+    int port,
+    String keyspace,
+    String table
+  ) {
     CqlSessionBuilder builder = CqlSession
       .builder()
       .withLocalDatacenter("datacenter1")
       .addContactPoint(new InetSocketAddress(hostname, port));
     try (CqlSession session = builder.build()) {
-      session.execute("""
-        CREATE KEYSPACE IF NOT EXISTS my_keyspace
+      session.execute(STR."""
+        CREATE KEYSPACE IF NOT EXISTS \{keyspace}
         WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '1'};
         """
       );
-      session.execute("""
-        CREATE TABLE IF NOT EXISTS my_keyspace.users (
-          user_id UUID PRIMARY KEY,
+      session.execute(STR."""
+        CREATE TABLE IF NOT EXISTS \{keyspace}.\{table} (
+          id UUID PRIMARY KEY,
           name TEXT,
-          age INT
+          age INT,
+          values map<TEXT, TEXT>
         );
         """
       );
-      LOGGER.info("Cassandra initialized!");
+      LOGGER.info(STR."Table \{keyspace}.\{table} created");
     } catch (Exception e) {
-      LOGGER.error("Cassandra initialization error", e);
+      LOGGER.error(STR."Cannot create table \{keyspace}.\{table}", e);
       throw e;
     }
   }

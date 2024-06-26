@@ -1,6 +1,8 @@
 cassandra:
   hostname: "localhost"
   port: 9042
+  keyspace: "my_keyspace"
+  table: "my_table"
   route:
-    from: "direct:xxx"
-    to: "log:yyy"
+    from: "timer://foo?fixedRate=true&period=10000"
+    to: "cql://${cassandra.hostname}:${cassandra.port}/${cassandra.keyspace}"

@@ -20,6 +20,7 @@ dependencies {
   implementation("org.apache.camel.springboot:camel-spring-boot-starter")
 
   implementation("org.apache.camel.springboot:camel-jms-starter")
+  implementation("org.apache.camel.springboot:camel-cassandraql-starter")
 
   implementation("org.apache.cassandra:java-driver-core:4.18.1")
 
@@ -34,8 +35,17 @@ java {
   }
 }
 
+tasks.withType<JavaCompile> {
+  options.compilerArgs.addAll(listOf("--enable-preview", "--release", "21"))
+}
+
+tasks.withType<JavaExec> {
+  jvmArgs = listOf("--enable-preview")
+}
+
 tasks.withType<Test> {
   useJUnitPlatform()
+  jvmArgs = listOf("--enable-preview")
   testLogging {
     events(PASSED, SKIPPED, FAILED)
   }
