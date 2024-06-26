@@ -1,8 +1,6 @@
-spring:
-  flyway:
-    cassandra:
-      contactPoints: 127.0.0.1:9042
-      keyspace: mykeyspace
-      username: cassandra
-      password: cassandra
-
+cassandra:
+  hostname: "localhost"
+  port: 9042
+  route:
+    from: "direct:xxx"
+    to: "log:yyy"
