@@ -11,9 +11,11 @@ public class ApplicationConfiguration {
   @Bean
   public CassandraInitializer cassandraInitializer(
     @Value("${cassandra.hostname}") String hostname,
-    @Value("${cassandra.port}") int port
+    @Value("${cassandra.port}") int port,
+    @Value("${cassandra.keyspace}") String keyspace,
+    @Value("${cassandra.table}") String table
   ) {
-    return new CassandraInitializer(hostname, port);
+    return new CassandraInitializer(hostname, port, keyspace, table);
   }
 
   @Bean

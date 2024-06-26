@@ -31,7 +31,7 @@ class ApplicationTest {
   @Test
   void shouldDoSomething(CapturedOutput output) {
     await().atMost(Duration.ofSeconds(30)).untilAsserted(() -> {
-      assertThat(output.getOut()).contains("Cassandra initialized!");
+      assertThat(output.getOut()).contains("Table my_keyspace.my_table created");
     });
   }
 }

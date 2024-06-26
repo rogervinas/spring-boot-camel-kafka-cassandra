@@ -3,6 +3,7 @@
 # Spring Boot + Apache Camel + Kafka + Cassandra
 
 Documentation:
+* [Cassandra CQL Camel Component](https://camel.apache.org/components/4.4.x/cql-component.html)
 
 # Test
 ```shell
@@ -29,5 +30,5 @@ docker compose down
 docker compose up -d
 docker exec -it spring-boot-camel-kafka-cassandra-cassandra-1 cqlsh cassandra 9042 --cqlversion='3.4.7'
 use my_keyspace;
-select * from users;
+select * from my_table;
 ```
