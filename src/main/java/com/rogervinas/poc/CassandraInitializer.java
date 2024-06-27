@@ -29,10 +29,8 @@ public class CassandraInitializer {
       );
       session.execute(STR."""
         CREATE TABLE IF NOT EXISTS \{keyspace}.\{table} (
-          id UUID PRIMARY KEY,
-          name TEXT,
-          age INT,
-          values map<TEXT, TEXT>
+          id TEXT PRIMARY KEY,
+          source map<TEXT, TEXT>
         );
         """
       );

@@ -1,8 +1,8 @@
 cassandra:
   hostname: "localhost"
   port: 9042
-  keyspace: "my_keyspace"
-  table: "my_table"
+  keyspace: "test_keyspace"
+  table: "hits"
   route:
-    from: "timer://foo?fixedRate=true&period=10000"
-    to: "cql://${cassandra.hostname}:${cassandra.port}/${cassandra.keyspace}"
+    from: "direct:xxx"
+    to: "cql://${cassandra.hostname}:${cassandra.port}/${cassandra.keyspace}?cql=INSERT INTO ${cassandra.table} (id, source) values (?, ?)"

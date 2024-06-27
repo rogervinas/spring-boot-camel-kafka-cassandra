@@ -1,4 +1,8 @@
 [![CI](https://github.com/rogervinas/spring-boot-camel-kafka-cassandra/actions/workflows/gradle.yml/badge.svg)](https://github.com/rogervinas/spring-boot-camel-kafka-cassandra/actions/workflows/gradle.yml)
+![Java](https://img.shields.io/badge/Java-21-blue?labelColor=black)
+![SpringBoot](https://img.shields.io/badge/SpringBoot-3.3.1-blue?labelColor=black)
+![ApacheCamel](https://img.shields.io/badge/ApacheCamel-4.6.0-blue?labelColor=black)
+![Cassandra](https://img.shields.io/badge/Cassandra-5.0-blue?labelColor=black)
 
 # Spring Boot + Apache Camel + Kafka + Cassandra
 
@@ -29,6 +33,6 @@ docker compose down
 ```shell
 docker compose up -d
 docker exec -it spring-boot-camel-kafka-cassandra-cassandra-1 cqlsh cassandra 9042 --cqlversion='3.4.7'
-use my_keyspace;
-select * from my_table;
+use test_keyspace;
+select * from hits;
 ```

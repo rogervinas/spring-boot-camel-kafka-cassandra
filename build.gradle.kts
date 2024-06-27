@@ -15,18 +15,26 @@ repositories {
   mavenCentral()
 }
 
+val javaSnapshotTestingVersion = "4.0.8"
+
 dependencies {
   implementation(platform("org.apache.camel.springboot:camel-spring-boot-dependencies:4.6.0"))
   implementation("org.apache.camel.springboot:camel-spring-boot-starter")
 
   implementation("org.apache.camel.springboot:camel-jms-starter")
   implementation("org.apache.camel.springboot:camel-cassandraql-starter")
+  implementation("org.apache.camel.springboot:camel-jsonpath-starter")
 
   implementation("org.apache.cassandra:java-driver-core:4.18.1")
 
   testImplementation("org.springframework.boot:spring-boot-starter-test")
+  testImplementation("org.apache.camel:camel-test-junit5")
+  testImplementation("commons-io:commons-io:2.11.0")
   testImplementation("org.awaitility:awaitility:4.2.1")
   testImplementation("org.testcontainers:junit-jupiter:1.19.8")
+
+  testImplementation("io.github.origin-energy:java-snapshot-testing-junit5:$javaSnapshotTestingVersion")
+  testImplementation("io.github.origin-energy:java-snapshot-testing-plugin-jackson:$javaSnapshotTestingVersion")
 }
 
 java {
