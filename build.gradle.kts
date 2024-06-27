@@ -35,7 +35,6 @@ dependencies {
 
   testImplementation("io.github.origin-energy:java-snapshot-testing-junit5:$javaSnapshotTestingVersion")
   testImplementation("io.github.origin-energy:java-snapshot-testing-plugin-jackson:$javaSnapshotTestingVersion")
-  testImplementation("org.slf4j:slf4j-simple:2.0.13")
 }
 
 java {

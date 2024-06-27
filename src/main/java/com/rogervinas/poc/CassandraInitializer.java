@@ -30,7 +30,7 @@ public class CassandraInitializer {
       session.execute(STR."""
         CREATE TABLE IF NOT EXISTS \{keyspace}.\{table} (
           id TEXT PRIMARY KEY,
-          values map<TEXT, TEXT>
+          source map<TEXT, TEXT>
         );
         """
       );
