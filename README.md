@@ -33,6 +33,6 @@ docker compose down
 ```shell
 docker compose up -d
 docker exec -it spring-boot-camel-kafka-cassandra-cassandra-1 cqlsh cassandra 9042 --cqlversion='3.4.7'
-use my_keyspace;
-select * from my_table;
+use test_keyspace;
+select * from hits;
 ```
