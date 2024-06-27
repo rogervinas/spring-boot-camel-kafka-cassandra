@@ -4,9 +4,6 @@ import org.apache.camel.builder.RouteBuilder;
 
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
-
-import static org.apache.camel.component.cassandra.CassandraConstants.CQL_QUERY;
 
 public class CassandraRouteBuilder extends RouteBuilder {
 
@@ -21,18 +18,16 @@ public class CassandraRouteBuilder extends RouteBuilder {
   @Override
   public void configure() {
     from(uriFrom)
-      .log("Inserting into my_table")
-      .setBody(constant(newBody()))
-      .setHeader(CQL_QUERY, constant("INSERT INTO my_table (id, name, age, values) values (?, ?, ?, ?)"))
+      .split(jsonpath("$.hits.hits"))
+      .log("HIT ${body}")
+      .transform().body(Map.class, this::mapBody)
       .to(uriTo);
   }
 
-  private Object newBody() {
+  private Object mapBody(Map<String, Object> body) {
     return List.of(
-      UUID.randomUUID(),
-      "some name",
-      35,
-      Map.of("k1", "v1", "k2", "v2")
+      body.get("_id"),
+      body.get("_source")
     );
   }
 }
