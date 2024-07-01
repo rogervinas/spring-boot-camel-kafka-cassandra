@@ -29,7 +29,7 @@ dependencies {
 
   testImplementation("org.springframework.boot:spring-boot-starter-test")
   testImplementation("org.apache.camel:camel-test-junit5")
-  testImplementation("commons-io:commons-io:2.11.0")
+  testImplementation("commons-io:commons-io:2.16.1")
   testImplementation("org.awaitility:awaitility:4.2.1")
   testImplementation("org.testcontainers:junit-jupiter:1.19.8")
 
