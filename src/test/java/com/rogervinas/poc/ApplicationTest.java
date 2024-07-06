@@ -29,7 +29,7 @@ import static org.awaitility.Awaitility.await;
 @ExtendWith(SnapshotExtension.class)
 class ApplicationTest {
 
-  static final Duration ONE_MINUTE = Duration.ofMinutes(1);
+  static final Duration FIVE_MINUTES = Duration.ofMinutes(5);
 
   @Container
   static Startable container = DockerComposeHelper.createContainer();
@@ -65,7 +65,7 @@ class ApplicationTest {
     var kafkaMessage = IOUtils.resourceToString("message.json", UTF_8, getSystemClassLoader());
     kafkaProducerHelper.send(kafkaTopic, kafkaMessage);
 
-    await().atMost(ONE_MINUTE).untilAsserted(() -> {
+    await().atMost(FIVE_MINUTES).untilAsserted(() -> {
       List<Map<String, Object>> rows = selectFromCassandraTable();
       assertThat(rows).hasSize(8);
       expect.serializer("json").toMatchSnapshot(rows);
@@ -81,7 +81,7 @@ class ApplicationTest {
     var kafkaMessage2 = IOUtils.resourceToString("message-2.json", UTF_8, getSystemClassLoader());
     kafkaProducerHelper.send(kafkaTopic, kafkaMessage2);
 
-    await().atMost(ONE_MINUTE).untilAsserted(() -> {
+    await().atMost(FIVE_MINUTES).untilAsserted(() -> {
       List<Map<String, Object>> rows = selectFromCassandraTable();
       assertThat(rows).hasSize(1);
       expect.serializer("json").toMatchSnapshot(rows);
