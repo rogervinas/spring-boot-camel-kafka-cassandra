@@ -11,7 +11,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
+import org.testcontainers.lifecycle.Startable;
 
 import java.time.Duration;
 import java.util.List;
@@ -29,8 +31,8 @@ class ApplicationTest {
 
   static final Duration THIRTY_SECONDS = Duration.ofSeconds(30);
 
-  //@Container
-  //static Startable container = DockerComposeHelper.createContainer();
+  @Container
+  static Startable container = DockerComposeHelper.createContainer();
 
   Expect expect;
 
