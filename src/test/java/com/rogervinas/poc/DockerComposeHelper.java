@@ -53,12 +53,12 @@ public class DockerComposeHelper {
         .withExposedService(
           KAFKA,
           KAFKA_PORT,
-          forLogMessage(".*started.*", 1)
+          forLogMessage(".*started.*", 1).withStartupTimeout(STARTUP_TIMEOUT)
         )
         .withExposedService(
           ZOOKEEPER,
           ZOOKEEPER_PORT,
-          forLogMessage(".*Started.*", 1)
+          forLogMessage(".*Started.*", 1).withStartupTimeout(STARTUP_TIMEOUT)
         );
     }
     return container;
@@ -76,12 +76,12 @@ public class DockerComposeHelper {
         .withExposedService(
           KAFKA,
           KAFKA_PORT,
-          forLogMessage(".*started.*", 1)
+          forLogMessage(".*started.*", 1).withStartupTimeout(STARTUP_TIMEOUT)
         )
         .withExposedService(
           ZOOKEEPER,
           ZOOKEEPER_PORT,
-          forLogMessage(".*Started.*", 1)
+          forLogMessage(".*Started.*", 1).withStartupTimeout(STARTUP_TIMEOUT)
         );
     }
     return container;
