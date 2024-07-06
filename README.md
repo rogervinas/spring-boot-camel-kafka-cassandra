@@ -36,3 +36,8 @@ docker exec -it spring-boot-camel-kafka-cassandra-cassandra-1 cqlsh cassandra 90
 use test_keyspace;
 select * from hits;
 ```
+
+# Send to Kafka using [kcat](https://github.com/edenhill/kcat)
+```shell
+kcat -b localhost:9094 -t hits -P src/test/resources/message.json
+```

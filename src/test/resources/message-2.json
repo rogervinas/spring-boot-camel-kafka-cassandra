@@ -1,0 +1,32 @@
+{
+  "took": 538,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": {
+      "value": 8,
+      "relation": "eq"
+    },
+    "max_score": null,
+    "hits": [
+      {
+        "_index": "ist.enterprise.test.trade.eod.v1-1",
+        "_type": "data",
+        "_id": "IRSwap_TRADE20230510.csv_20230816142109998_10.233.201.208_1_10",
+        "_score": null,
+        "_source": {
+          "aaaaa": "xxxxx",
+          "bbbbb": "yyyyy"
+        },
+        "sort": [
+          1692213685879
+        ]
+      }
+    ]
+  }
+}

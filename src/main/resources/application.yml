@@ -1,8 +1,16 @@
 cassandra:
   hostname: "localhost"
   port: 9042
+  datacenter: "datacenter1"
   keyspace: "test_keyspace"
   table: "hits"
-  route:
-    from: "direct:xxx"
-    to: "cql://${cassandra.hostname}:${cassandra.port}/${cassandra.keyspace}?cql=INSERT INTO ${cassandra.table} (id, source) values (?, ?)"
+
+kafka:
+  hostname: "localhost"
+  port: 9094
+  group: "test_group"
+  topic: "hits"
+
+route:
+  from: "kafka:${kafka.topic}?brokers=${kafka.hostname}:${kafka.port}&groupId=${kafka.group}"
+  to: "cql://${cassandra.hostname}:${cassandra.port}/${cassandra.keyspace}?cql=INSERT INTO ${cassandra.table} (id, source) values (?, ?)"

@@ -21,6 +21,12 @@ public class DockerComposeHelper {
   private static final String CASSANDRA = "cassandra";
   private static final int CASSANDRA_PORT = 9042;
 
+  private static final String KAFKA = "kafka";
+  private static final int KAFKA_PORT = 9094;
+
+  private static final String ZOOKEEPER = "zookeeper";
+  private static final int ZOOKEEPER_PORT = 2181;
+
   private static Startable container = null;
 
   private static boolean isCI() {
@@ -43,6 +49,16 @@ public class DockerComposeHelper {
           CASSANDRA,
           CASSANDRA_PORT,
           forLogMessage(".*Startup complete.*", 1).withStartupTimeout(STARTUP_TIMEOUT)
+        )
+        .withExposedService(
+          KAFKA,
+          KAFKA_PORT,
+          forLogMessage(".*started.*", 1)
+        )
+        .withExposedService(
+          ZOOKEEPER,
+          ZOOKEEPER_PORT,
+          forLogMessage(".*Started.*", 1)
         );
     }
     return container;
@@ -56,28 +72,18 @@ public class DockerComposeHelper {
           CASSANDRA,
           CASSANDRA_PORT,
           forLogMessage(".*Startup complete.*", 1).withStartupTimeout(STARTUP_TIMEOUT)
+        )
+        .withExposedService(
+          KAFKA,
+          KAFKA_PORT,
+          forLogMessage(".*started.*", 1)
+        )
+        .withExposedService(
+          ZOOKEEPER,
+          ZOOKEEPER_PORT,
+          forLogMessage(".*Started.*", 1)
         );
     }
     return container;
-  }
-
-  public static void setSystemProperties() {
-    if (isCI()) {
-      setSystemPropertiesV1();
-    } else {
-      setSystemPropertiesV2();
-    }
-  }
-
-  private static void setSystemPropertiesV1() {
-    DockerComposeContainer containerV1 = (DockerComposeContainer) container;
-    var cassandraPort = containerV1.getServicePort(CASSANDRA, CASSANDRA_PORT);
-    System.setProperty("cassandra.port", cassandraPort.toString());
-  }
-
-  private static void setSystemPropertiesV2() {
-    ComposeContainer containerV1 = (ComposeContainer) container;
-    var cassandraPort = containerV1.getServicePort(CASSANDRA, CASSANDRA_PORT);
-    System.setProperty("cassandra.port", cassandraPort.toString());
   }
 }
