@@ -11,7 +11,7 @@ import java.util.Properties;
 
 public class KafkaInitializer {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(CassandraInitializer.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(KafkaInitializer.class);
 
   private static final int PARTITIONS = 1;
   private static final short REPLICATION = 1;

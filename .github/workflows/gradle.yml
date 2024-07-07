@@ -9,6 +9,9 @@ on:
 permissions:
   contents: read
 
+env:
+  TESTCONTAINERS_RYUK_DISABLED: true
+
 jobs:
   build:
 

@@ -8,6 +8,8 @@ import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,6 +30,8 @@ import static org.awaitility.Awaitility.await;
 @Testcontainers
 @ExtendWith(SnapshotExtension.class)
 class ApplicationTest {
+
+  static final Logger LOGGER = LoggerFactory.getLogger(ApplicationTest.class);
 
   static final Duration FIVE_MINUTES = Duration.ofMinutes(5);
 
@@ -62,6 +66,7 @@ class ApplicationTest {
   void shouldProcessInputMessage() throws Exception {
     truncateCassandraTable();
 
+    LOGGER.info("SENDING MESSAGE!");
     var kafkaMessage = IOUtils.resourceToString("message.json", UTF_8, getSystemClassLoader());
     kafkaProducerHelper.send(kafkaTopic, kafkaMessage);
 
@@ -76,6 +81,7 @@ class ApplicationTest {
   void shouldProcessTwoInputMessagesUpdatingSameRow() throws Exception {
     truncateCassandraTable();
 
+    LOGGER.info("SENDING MESSAGES!");
     var kafkaMessage1 = IOUtils.resourceToString("message-1.json", UTF_8, getSystemClassLoader());
     kafkaProducerHelper.send(kafkaTopic, kafkaMessage1);
     var kafkaMessage2 = IOUtils.resourceToString("message-2.json", UTF_8, getSystemClassLoader());
