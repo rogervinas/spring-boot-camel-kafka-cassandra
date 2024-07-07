@@ -66,7 +66,7 @@ class ApplicationTest {
     kafkaProducerHelper.send(kafkaTopic, kafkaMessage);
 
     await().atMost(FIVE_MINUTES).untilAsserted(() -> {
-      List<Map<String, Object>> rows = selectFromCassandraTable();
+      var rows = selectFromCassandraTable();
       assertThat(rows).hasSize(8);
       expect.serializer("json").toMatchSnapshot(rows);
     });
@@ -82,7 +82,7 @@ class ApplicationTest {
     kafkaProducerHelper.send(kafkaTopic, kafkaMessage2);
 
     await().atMost(FIVE_MINUTES).untilAsserted(() -> {
-      List<Map<String, Object>> rows = selectFromCassandraTable();
+      var rows = selectFromCassandraTable();
       assertThat(rows).hasSize(1);
       expect.serializer("json").toMatchSnapshot(rows);
     });

@@ -34,6 +34,14 @@ public class ApplicationConfiguration {
   }
 
   @Bean
+  public KafkaInitializer kafkaInitializer(
+    @Value("${kafka.hostname}:${kafka.port}") String broker,
+    @Value("${kafka.topic}") String topic
+  ) throws Exception {
+    return new KafkaInitializer(broker, topic);
+  }
+
+  @Bean
   public RouteBuilder cassandraRouteBuilder(
     @Value("${route.from}") String uriFrom,
     @Value("${route.to}") String uriTo
