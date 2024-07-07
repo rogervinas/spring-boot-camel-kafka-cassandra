@@ -8,8 +8,6 @@ import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -31,7 +29,7 @@ import static org.awaitility.Awaitility.await;
 @ExtendWith(SnapshotExtension.class)
 class ApplicationTest {
 
-  static final Duration FIVE_MINUTES = Duration.ofMinutes(5);
+  static final Duration TWENTY_SECONDS = Duration.ofSeconds(20);
 
   @Container
   static Startable container = DockerComposeHelper.createContainer();
@@ -58,6 +56,15 @@ class ApplicationTest {
   @BeforeEach
   void beforeEach() {
     kafkaProducerHelper = new KafkaProducerHelper(kafkaBroker);
+    sleepToWaitForKafkaConsumerToSubscribe();
+  }
+
+  private void sleepToWaitForKafkaConsumerToSubscribe() {
+    try {
+      // Just wait some time to ensure Apache Camel route is subscribed to the topic
+      Thread.sleep(TWENTY_SECONDS);
+    } catch (InterruptedException _) {
+    }
   }
 
   @Test
@@ -67,7 +74,7 @@ class ApplicationTest {
     var kafkaMessage = IOUtils.resourceToString("message.json", UTF_8, getSystemClassLoader());
     kafkaProducerHelper.send(kafkaTopic, kafkaMessage);
 
-    await().atMost(FIVE_MINUTES).untilAsserted(() -> {
+    await().atMost(TWENTY_SECONDS).untilAsserted(() -> {
       var rows = selectFromCassandraTable();
       assertThat(rows).hasSize(8);
       expect.serializer("json").toMatchSnapshot(rows);
@@ -83,7 +90,7 @@ class ApplicationTest {
     var kafkaMessage2 = IOUtils.resourceToString("message-2.json", UTF_8, getSystemClassLoader());
     kafkaProducerHelper.send(kafkaTopic, kafkaMessage2);
 
-    await().atMost(FIVE_MINUTES).untilAsserted(() -> {
+    await().atMost(TWENTY_SECONDS).untilAsserted(() -> {
       var rows = selectFromCassandraTable();
       assertThat(rows).hasSize(1);
       expect.serializer("json").toMatchSnapshot(rows);
