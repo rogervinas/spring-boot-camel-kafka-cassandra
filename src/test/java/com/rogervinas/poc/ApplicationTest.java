@@ -31,8 +31,6 @@ import static org.awaitility.Awaitility.await;
 @ExtendWith(SnapshotExtension.class)
 class ApplicationTest {
 
-  static final Logger LOGGER = LoggerFactory.getLogger(ApplicationTest.class);
-
   static final Duration FIVE_MINUTES = Duration.ofMinutes(5);
 
   @Container
@@ -66,7 +64,6 @@ class ApplicationTest {
   void shouldProcessInputMessage() throws Exception {
     truncateCassandraTable();
 
-    LOGGER.info("SENDING MESSAGE!");
     var kafkaMessage = IOUtils.resourceToString("message.json", UTF_8, getSystemClassLoader());
     kafkaProducerHelper.send(kafkaTopic, kafkaMessage);
 
@@ -81,7 +78,6 @@ class ApplicationTest {
   void shouldProcessTwoInputMessagesUpdatingSameRow() throws Exception {
     truncateCassandraTable();
 
-    LOGGER.info("SENDING MESSAGES!");
     var kafkaMessage1 = IOUtils.resourceToString("message-1.json", UTF_8, getSystemClassLoader());
     kafkaProducerHelper.send(kafkaTopic, kafkaMessage1);
     var kafkaMessage2 = IOUtils.resourceToString("message-2.json", UTF_8, getSystemClassLoader());
