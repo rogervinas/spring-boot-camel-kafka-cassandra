@@ -1,5 +1,0 @@
-services:
-
-  cassandra:
-    ports:
-      - "9042:9042"

@@ -12,15 +12,10 @@ public class CassandraInitializer {
   private static final Logger LOGGER = LoggerFactory.getLogger(CassandraInitializer.class);
 
   public CassandraInitializer(
-    String hostname,
-    int port,
+    CqlSessionBuilder builder,
     String keyspace,
     String table
   ) {
-    CqlSessionBuilder builder = CqlSession
-      .builder()
-      .withLocalDatacenter("datacenter1")
-      .addContactPoint(new InetSocketAddress(hostname, port));
     try (CqlSession session = builder.build()) {
       session.execute(STR."""
         CREATE KEYSPACE IF NOT EXISTS \{keyspace}

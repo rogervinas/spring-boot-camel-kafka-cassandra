@@ -1,27 +1,50 @@
 package com.rogervinas.poc;
 
+import com.datastax.oss.driver.api.core.CqlSession;
+import com.datastax.oss.driver.api.core.CqlSessionBuilder;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.net.InetSocketAddress;
+
 @Configuration
 public class ApplicationConfiguration {
 
   @Bean
-  public CassandraInitializer cassandraInitializer(
+  public CqlSessionBuilder cassandraSessionBuilder(
     @Value("${cassandra.hostname}") String hostname,
     @Value("${cassandra.port}") int port,
+    @Value("${cassandra.datacenter}") String datacenter
+  ) {
+    return CqlSession
+      .builder()
+      .withLocalDatacenter(datacenter)
+      .addContactPoint(new InetSocketAddress(hostname, port));
+  }
+
+  @Bean
+  public CassandraInitializer cassandraInitializer(
+    CqlSessionBuilder builder,
     @Value("${cassandra.keyspace}") String keyspace,
     @Value("${cassandra.table}") String table
   ) {
-    return new CassandraInitializer(hostname, port, keyspace, table);
+    return new CassandraInitializer(builder, keyspace, table);
+  }
+
+  @Bean
+  public KafkaInitializer kafkaInitializer(
+    @Value("${kafka.hostname}:${kafka.port}") String broker,
+    @Value("${kafka.topic}") String topic
+  ) throws Exception {
+    return new KafkaInitializer(broker, topic);
   }
 
   @Bean
   public RouteBuilder cassandraRouteBuilder(
-    @Value("${cassandra.route.from}") String uriFrom,
-    @Value("${cassandra.route.to}") String uriTo
+    @Value("${route.from}") String uriFrom,
+    @Value("${route.to}") String uriTo
   ) {
     return new CassandraRouteBuilder(uriFrom, uriTo);
   }

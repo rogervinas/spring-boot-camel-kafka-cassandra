@@ -21,7 +21,7 @@ dependencies {
   implementation(platform("org.apache.camel.springboot:camel-spring-boot-dependencies:4.6.0"))
   implementation("org.apache.camel.springboot:camel-spring-boot-starter")
 
-  implementation("org.apache.camel.springboot:camel-jms-starter")
+  implementation("org.apache.camel.springboot:camel-kafka-starter")
   implementation("org.apache.camel.springboot:camel-cassandraql-starter")
   implementation("org.apache.camel.springboot:camel-jsonpath-starter")
 
