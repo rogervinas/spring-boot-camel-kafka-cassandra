@@ -30,8 +30,8 @@ dependencies {
   testImplementation("org.springframework.boot:spring-boot-starter-test")
   testImplementation("org.apache.camel:camel-test-junit5")
   testImplementation("commons-io:commons-io:2.16.1")
-  testImplementation("org.awaitility:awaitility:4.2.1")
-  testImplementation("org.testcontainers:junit-jupiter:1.20.0")
+  testImplementation("org.awaitility:awaitility:4.2.2")
+  testImplementation("org.testcontainers:junit-jupiter:1.20.1")
 
   testImplementation("io.github.origin-energy:java-snapshot-testing-junit5:$javaSnapshotTestingVersion")
   testImplementation("io.github.origin-energy:java-snapshot-testing-plugin-jackson:$javaSnapshotTestingVersion")
