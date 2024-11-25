@@ -4,7 +4,7 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent.SKIPPED
 
 plugins {
   java
-  id("org.springframework.boot") version "3.3.5"
+  id("org.springframework.boot") version "3.4.0"
   id("io.spring.dependency-management") version "1.1.6"
 }
 
@@ -29,9 +29,9 @@ dependencies {
 
   testImplementation("org.springframework.boot:spring-boot-starter-test")
   testImplementation("org.apache.camel:camel-test-junit5")
-  testImplementation("commons-io:commons-io:2.17.0")
+  testImplementation("commons-io:commons-io:2.18.0")
   testImplementation("org.awaitility:awaitility:4.2.2")
-  testImplementation("org.testcontainers:junit-jupiter:1.20.3")
+  testImplementation("org.testcontainers:junit-jupiter:1.20.4")
 
   testImplementation("io.github.origin-energy:java-snapshot-testing-junit5:$javaSnapshotTestingVersion")
   testImplementation("io.github.origin-energy:java-snapshot-testing-plugin-jackson:$javaSnapshotTestingVersion")
