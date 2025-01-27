@@ -4,8 +4,8 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent.SKIPPED
 
 plugins {
   java
-  id("org.springframework.boot") version "3.4.0"
-  id("io.spring.dependency-management") version "1.1.6"
+  id("org.springframework.boot") version "3.4.2"
+  id("io.spring.dependency-management") version "1.1.7"
 }
 
 group = "com.rogervinas"
@@ -18,7 +18,7 @@ repositories {
 val javaSnapshotTestingVersion = "4.0.8"
 
 dependencies {
-  implementation(platform("org.apache.camel.springboot:camel-spring-boot-dependencies:4.8.1"))
+  implementation(platform("org.apache.camel.springboot:camel-spring-boot-dependencies:4.9.0"))
   implementation("org.apache.camel.springboot:camel-spring-boot-starter")
 
   implementation("org.apache.camel.springboot:camel-kafka-starter")
