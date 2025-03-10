@@ -4,8 +4,8 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent.SKIPPED
 
 plugins {
   java
-  id("org.springframework.boot") version "3.4.0"
-  id("io.spring.dependency-management") version "1.1.6"
+  id("org.springframework.boot") version "3.4.3"
+  id("io.spring.dependency-management") version "1.1.7"
 }
 
 group = "com.rogervinas"
@@ -18,20 +18,20 @@ repositories {
 val javaSnapshotTestingVersion = "4.0.8"
 
 dependencies {
-  implementation(platform("org.apache.camel.springboot:camel-spring-boot-dependencies:4.8.1"))
+  implementation(platform("org.apache.camel.springboot:camel-spring-boot-dependencies:4.10.2"))
   implementation("org.apache.camel.springboot:camel-spring-boot-starter")
 
   implementation("org.apache.camel.springboot:camel-kafka-starter")
   implementation("org.apache.camel.springboot:camel-cassandraql-starter")
   implementation("org.apache.camel.springboot:camel-jsonpath-starter")
 
-  implementation("org.apache.cassandra:java-driver-core:4.18.1")
+  implementation("org.apache.cassandra:java-driver-core:4.19.0")
 
   testImplementation("org.springframework.boot:spring-boot-starter-test")
   testImplementation("org.apache.camel:camel-test-junit5")
   testImplementation("commons-io:commons-io:2.18.0")
-  testImplementation("org.awaitility:awaitility:4.2.2")
-  testImplementation("org.testcontainers:junit-jupiter:1.20.4")
+  testImplementation("org.awaitility:awaitility:4.3.0")
+  testImplementation("org.testcontainers:junit-jupiter:1.20.6")
 
   testImplementation("io.github.origin-energy:java-snapshot-testing-junit5:$javaSnapshotTestingVersion")
   testImplementation("io.github.origin-energy:java-snapshot-testing-plugin-jackson:$javaSnapshotTestingVersion")
