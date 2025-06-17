@@ -40,5 +40,5 @@ select * from hits;
 
 # Send to Kafka using [kcat](https://github.com/edenhill/kcat)
 ```shell
-kcat -b localhost:9094 -t hits -P src/test/resources/message.json
+kcat -b localhost:9092 -t hits -P src/test/resources/message.json
 ```

@@ -14,11 +14,8 @@ public class DockerComposeHelper {
   private static final String CASSANDRA = "cassandra";
   private static final int CASSANDRA_PORT = 9042;
 
-  private static final String KAFKA = "kafka";
-  private static final int KAFKA_PORT = 9094;
-
-  private static final String ZOOKEEPER = "zookeeper";
-  private static final int ZOOKEEPER_PORT = 2181;
+  private static final String KAFKA = "kafka-kraft";
+  private static final int KAFKA_PORT = 9092;
 
   public static ComposeContainer createContainer() {
     return new ComposeContainer(new File("docker-compose.yml"))
@@ -31,12 +28,7 @@ public class DockerComposeHelper {
       .withExposedService(
         KAFKA,
         KAFKA_PORT,
-        forLogMessage(".*started.*", 1).withStartupTimeout(FIVE_MINUTES)
-      )
-      .withExposedService(
-        ZOOKEEPER,
-        ZOOKEEPER_PORT,
-        forLogMessage(".*Started.*", 1).withStartupTimeout(FIVE_MINUTES)
+        forLogMessage(".*Kafka Server started.*", 1).withStartupTimeout(FIVE_MINUTES)
       );
   }
 }

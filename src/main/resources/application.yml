@@ -7,7 +7,7 @@ cassandra:
 
 kafka:
   hostname: "localhost"
-  port: 9094
+  port: 9092
   group: "test_group"
   topic: "hits"
 
