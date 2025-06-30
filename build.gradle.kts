@@ -31,7 +31,7 @@ dependencies {
   testImplementation("org.apache.camel:camel-test-junit5")
   testImplementation("commons-io:commons-io:2.19.0")
   testImplementation("org.awaitility:awaitility:4.3.0")
-  testImplementation("org.testcontainers:junit-jupiter:1.21.2")
+  testImplementation("org.testcontainers:junit-jupiter:1.21.3")
 
   testImplementation("io.github.origin-energy:java-snapshot-testing-junit5:$javaSnapshotTestingVersion")
   testImplementation("io.github.origin-energy:java-snapshot-testing-plugin-jackson:$javaSnapshotTestingVersion")
