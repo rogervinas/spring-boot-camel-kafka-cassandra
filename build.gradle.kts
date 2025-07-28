@@ -4,7 +4,7 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent.SKIPPED
 
 plugins {
   java
-  id("org.springframework.boot") version "3.5.3"
+  id("org.springframework.boot") version "3.5.4"
   id("io.spring.dependency-management") version "1.1.7"
 }
 
@@ -29,7 +29,7 @@ dependencies {
 
   testImplementation("org.springframework.boot:spring-boot-starter-test")
   testImplementation("org.apache.camel:camel-test-junit5")
-  testImplementation("commons-io:commons-io:2.19.0")
+  testImplementation("commons-io:commons-io:2.20.0")
   testImplementation("org.awaitility:awaitility:4.3.0")
   testImplementation("org.testcontainers:junit-jupiter:1.21.3")
 
