@@ -18,7 +18,7 @@ repositories {
 val javaSnapshotTestingVersion = "4.0.8"
 
 dependencies {
-  implementation(platform("org.apache.camel.springboot:camel-spring-boot-dependencies:4.15.0"))
+  implementation(platform("org.apache.camel.springboot:camel-spring-boot-dependencies:4.16.0"))
   implementation("org.apache.camel.springboot:camel-spring-boot-starter")
 
   implementation("org.apache.camel.springboot:camel-kafka-starter")
@@ -29,7 +29,7 @@ dependencies {
 
   testImplementation("org.springframework.boot:spring-boot-starter-test")
   testImplementation("org.apache.camel:camel-test-junit5")
-  testImplementation("commons-io:commons-io:2.20.0")
+  testImplementation("commons-io:commons-io:2.21.0")
   testImplementation("org.awaitility:awaitility:4.3.0")
   testImplementation("org.testcontainers:junit-jupiter:1.21.3")
 
