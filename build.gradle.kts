@@ -4,7 +4,7 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent.SKIPPED
 
 plugins {
   java
-  id("org.springframework.boot") version "3.5.7"
+  id("org.springframework.boot") version "4.0.0"
   id("io.spring.dependency-management") version "1.1.7"
 }
 
@@ -25,7 +25,7 @@ dependencies {
   implementation("org.apache.camel.springboot:camel-cassandraql-starter")
   implementation("org.apache.camel.springboot:camel-jsonpath-starter")
 
-  implementation("org.apache.cassandra:java-driver-core:4.19.1")
+  implementation("org.apache.cassandra:java-driver-core:4.19.2")
 
   testImplementation("org.springframework.boot:spring-boot-starter-test")
   testImplementation("org.apache.camel:camel-test-junit5")
