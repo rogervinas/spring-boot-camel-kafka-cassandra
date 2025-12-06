@@ -1,9 +1,9 @@
 [![CI](https://github.com/rogervinas/spring-boot-camel-kafka-cassandra/actions/workflows/ci.yml/badge.svg)](https://github.com/rogervinas/spring-boot-camel-kafka-cassandra/actions/workflows/ci.yml)
 ![Java](https://img.shields.io/badge/Java-21-blue?labelColor=black)
-![SpringBoot](https://img.shields.io/badge/SpringBoot-3.x-blue?labelColor=black)
-![ApacheCamel](https://img.shields.io/badge/ApacheCamel-4.8.0-blue?labelColor=black)
-![Cassandra](https://img.shields.io/badge/Cassandra-5.0-blue?labelColor=black)
-![ConfluentKafka](https://img.shields.io/badge/ConfluentKafka-7.6.1-blue?labelColor=black)
+![SpringBoot](https://img.shields.io/badge/SpringBoot-4.x-blue?labelColor=black)
+![ApacheCamel](https://img.shields.io/badge/ApacheCamel-4.x-blue?labelColor=black)
+![Cassandra](https://img.shields.io/badge/Cassandra-5.x-blue?labelColor=black)
+![ConfluentKafka](https://img.shields.io/badge/ConfluentKafka-8.x-blue?labelColor=black)
 
 # Spring Boot + Apache Camel + Kafka + Cassandra
 

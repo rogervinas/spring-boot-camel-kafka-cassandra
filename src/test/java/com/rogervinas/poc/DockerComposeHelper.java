@@ -19,7 +19,6 @@ public class DockerComposeHelper {
 
   public static ComposeContainer createContainer() {
     return new ComposeContainer(new File("docker-compose.yml"))
-      .withLocalCompose(true)
       .withExposedService(
         CASSANDRA,
         CASSANDRA_PORT,
