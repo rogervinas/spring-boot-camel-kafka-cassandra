@@ -3,7 +3,7 @@
 ![SpringBoot](https://img.shields.io/badge/SpringBoot-4.x-blue?labelColor=black)
 ![ApacheCamel](https://img.shields.io/badge/ApacheCamel-4.x-blue?labelColor=black)
 ![Cassandra](https://img.shields.io/badge/Cassandra-5.x-blue?labelColor=black)
-![ConfluentKafka](https://img.shields.io/badge/ConfluentKafka-7.x-blue?labelColor=black)
+![ConfluentKafka](https://img.shields.io/badge/ConfluentKafka-8.x-blue?labelColor=black)
 
 # Spring Boot + Apache Camel + Kafka + Cassandra
 
