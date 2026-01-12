@@ -18,7 +18,7 @@ repositories {
 val javaSnapshotTestingVersion = "4.0.8"
 
 dependencies {
-  implementation(platform("org.apache.camel.springboot:camel-spring-boot-dependencies:4.16.0"))
+  implementation(platform("org.apache.camel.springboot:camel-spring-boot-dependencies:4.17.0"))
   implementation("org.apache.camel.springboot:camel-spring-boot-starter")
 
   implementation("org.apache.camel.springboot:camel-kafka-starter")
