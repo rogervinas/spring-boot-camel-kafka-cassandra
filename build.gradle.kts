@@ -25,7 +25,7 @@ dependencies {
   implementation("org.apache.camel.springboot:camel-cassandraql-starter")
   implementation("org.apache.camel.springboot:camel-jsonpath-starter")
 
-  implementation("org.apache.cassandra:java-driver-core:4.19.2")
+  implementation("org.apache.cassandra:java-driver-core:4.19.3")
 
   testImplementation("org.springframework.boot:spring-boot-starter-test")
   testImplementation("org.apache.camel:camel-test-junit5")
